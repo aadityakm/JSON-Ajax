@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>JSON AJAX Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width , initial-scale = 1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+  .btn-primary{
+  	margin:10px;
+  	padding:10px;
+  }
+  #member-data{
+  	margin :2px;
+  }
+  </style>
+  </head>
+  <body>
+  <div id = "table_container">
+  		<h1>JSON fetching  using AJAX</h1>
+  		 	<table class="table table-striped table-bordered" id="member_data" style="display: none">
+  		<tr>
+  			<th>ID</th>
+  			<th>Name</th>
+  			<th>Phone</th>
+  			<th>userPic</th>
+  			<th>isAdmin</th>
+  		</tr>
+  		</table>
+  		</div>
+ 
+<script type="text/javascript"> 
+ 
+
+ $(document).ready(function () {
+ 
+
+
+$.getJSON("localhost/members.json",
+function (json) {
+    var tr=[];
+    for (var i = 0; i < json.length; i++) {
+        tr.push('<tr>');
+        tr.push("<td>" + json[i].id + "</td>");
+        tr.push("<td>" + json[i].phone + "</td>");
+        tr.push("<td>" + json[i].name + "</td>");
+                tr.push("<td>" + json[i].userPic + "</td>");
+                        tr.push("<td>" + json[i].isAdmin + "</td>");
+        tr.push('</tr>');
+    }
+    $('table').append($(tr.join('')));
+
+
+        
+
+		}
+	 
+});
+
+</script>					 
+</body>
+</html>
